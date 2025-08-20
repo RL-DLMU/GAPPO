@@ -1,0 +1,25 @@
+本
+start=1000
+256
+0.99
+0.01
+0.4
+
+
+旧电脑上的 mega是0.4  decay=0.995 min=0.001 start=1500
+
+#服务器liu_loss
+0.4
+#服务器上的是decay = 0.99
+#服务器上的是mega = 0.4
+min = 0.001
+start 1500
+
+lr_0.1:
+min=0.1
+
+buffer_2048:
+decay = 0.99
+mega = 0.4
+min = 0.001
+start 1500
