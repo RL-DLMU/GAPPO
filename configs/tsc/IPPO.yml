@@ -1,0 +1,94 @@
+includes:
+  - configs/tsc/base.yml
+
+
+model:
+  name: time_shift
+  train_model: True
+  graphic: True
+  vehicle_max: 1
+  learning_rate: 0.001
+  actor_lr: 0.001
+  critic_lr: 0.001
+  lambda: 0.9
+  eps: 0.2
+  batch_size: 48
+  gamma: 0.9
+  beta: 0.9
+  num_copy: 10
+  group_num: 2
+  message_gamma: 0.7
+  mega_f: 1
+  mega_l: 1
+  epsilon: 1
+  grad_clip: 5.0
+  NEIGHBOR_NUM: 4
+  NEIGHBOR_EDGE_NUM: 4
+  N_LAYERS_3: 2
+  N_LAYERS: 1
+  INPUT_DIM: [128,128]
+  OUTPUT_DIM: [128,128]
+  RNN_DIM: [128,128]
+  NODE_EMB_DIM: [128,128]
+  NODE_EMB_L_DIM: [8]
+  NODE_EMB_F_DIM: [128, 8]
+  NODE_EMB_A_DIM: [128,128]
+  INPUT_DIM_3: [ 128, 256]
+  OUTPUT_DIM_3: [ 128, 256 ]
+  NUM_HEADS: [4, 4]
+  NODE_LAYER_DIMS_EACH_HEAD: [16, 16]
+  OUTPUT_LAYERS: []
+
+
+
+
+trainer:
+  thread: 4
+  ngpu: 0,1
+  learning_start: 1000
+  buffer_size: 5000
+  epochs: 15
+  steps: 3600
+  test_steps: 3600
+  action_interval: 6
+  episodes: 300
+  his_length: 5
+  # his_length: 20
+  time_slice: 20
+  update_model_rate: 10
+  update_target_rate: 10
+  # save_dir: data/output_data/task_name/dataset_dir/model_name
+  # load_dir: data/output_data/task_name/dataset_dir/model_name
+  # log_dir: log/task_name/dataset_dir/model_name/
+
+
+logger:
+  log_dir: "logger"
+  replay_dir: "replay"
+  save_dir: "model"
+  data_dir: "dataset"
+  get_attention: False
+  save_model: True
+  save_rate: 50
+  train_model: True
+  test_model: False
+  load_model: False
+
+
+traffic:
+  one_hot: True
+  phase: False
+  thread_num: 4
+  ACTION_PATTERN: "set"
+  MIN_ACTION_TIME: 5
+  YELLOW_TIME: 2
+  ALL_RED_TIME: 0
+  NUM_PHASES: 4
+  NUM_LANES: 1
+  ACTION_DIM: 8
+  MEASURE_TIME: 10
+  IF_GUI: True
+  DEBUG: False
+  INTERVAL: 1
+  SAVEREPLAY: True
+  RLTRAFFICLIGHT: True
